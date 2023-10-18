@@ -1,0 +1,83 @@
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 1 -nworst 1 -delay_type max -sort_by slack.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (lin64) Build 3526262 Mon Apr 18 15:47:01 MDT 2022
+| Date         : Wed Oct 18 17:17:30 2023
+| Host         : ubuntu2004 running 64-bit Ubuntu 20.04.4 LTS
+| Command      : report_timing
+| Design       : fir
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.555ns  (required time - arrival time)
+  Source:                 axilite_U/data_length_reg_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by axis_clk  {rise@0.000ns fall@6.500ns period=13.000ns})
+  Destination:            data_Di[0]
+                            (output port clocked by axis_clk  {rise@0.000ns fall@6.500ns period=13.000ns})
+  Path Group:             axis_clk
+  Path Type:              Max at Slow Process Corner
+  Requirement:            13.000ns  (axis_clk rise@13.000ns - axis_clk rise@0.000ns)
+  Data Path Delay:        8.453ns  (logic 4.283ns (50.673%)  route 4.170ns (49.327%))
+  Logic Levels:           7  (CARRY4=1 LUT4=1 LUT5=2 LUT6=2 OBUF=1)
+  Output Delay:           1.500ns
+  Clock Path Skew:        -2.456ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.000ns = ( 13.000 - 13.000 ) 
+    Source Clock Delay      (SCD):    2.456ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock axis_clk rise edge)
+                                                      0.000     0.000 r  
+                                                      0.000     0.000 r  axis_clk (IN)
+                         net (fo=0)                   0.000     0.000    axis_clk
+                         IBUF (Prop_ibuf_I_O)         0.972     0.972 r  axis_clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.771    axis_clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.101     1.872 r  axis_clk_IBUF_BUFG_inst/O
+                         net (fo=103, unplaced)       0.584     2.456    axilite_U/CLK
+                         FDCE                                         r  axilite_U/data_length_reg_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.934 f  axilite_U/data_length_reg_reg[4]/Q
+                         net (fo=3, unplaced)         0.983     3.917    axilite_U/data_length_reg_reg_n_0_[4]
+                         LUT6 (Prop_lut6_I0_O)        0.295     4.212 r  axilite_U/data_WE_OBUF[3]_inst_i_11/O
+                         net (fo=3, unplaced)         0.467     4.679    axilite_U/data_WE_OBUF[3]_inst_i_11_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124     4.803 r  axilite_U/data_WE_OBUF[3]_inst_i_12/O
+                         net (fo=1, unplaced)         0.449     5.252    axilite_U/data_WE_OBUF[3]_inst_i_12_n_0
+                         LUT4 (Prop_lut4_I0_O)        0.124     5.376 r  axilite_U/data_WE_OBUF[3]_inst_i_8/O
+                         net (fo=1, unplaced)         0.000     5.376    axilite_U/data_WE_OBUF[3]_inst_i_8_n_0
+                         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.380     5.756 f  axilite_U/data_WE_OBUF[3]_inst_i_2/CO[3]
+                         net (fo=6, unplaced)         0.950     6.706    axilite_U/CO[0]
+                         LUT5 (Prop_lut5_I0_O)        0.124     6.830 r  axilite_U/data_Di_OBUF[31]_inst_i_2/O
+                         net (fo=33, unplaced)        0.521     7.351    axi_stream_U/write_ptr_reg[0]_0
+                         LUT5 (Prop_lut5_I0_O)        0.124     7.475 r  axi_stream_U/data_Di_OBUF[0]_inst_i_1/O
+                         net (fo=1, unplaced)         0.800     8.275    data_Di_OBUF[0]
+                         OBUF (Prop_obuf_I_O)         2.634    10.910 r  data_Di_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    10.910    data_Di[0]
+                                                                      r  data_Di[0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         (clock axis_clk rise edge)
+                                                     13.000    13.000 r  
+                         clock pessimism              0.000    13.000    
+                         clock uncertainty           -0.035    12.965    
+                         output delay                -1.500    11.465    
+  -------------------------------------------------------------------
+                         required time                         11.465    
+                         arrival time                         -10.910    
+  -------------------------------------------------------------------
+                         slack                                  0.555    
+
+
+
+
